@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escanear</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.2.0/html5-qrcode.min.js"></script>
+    <script src="script.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        #reader {
+            width: 100%;
+        }
+
+        .result {
+            background-color: green;
+            color: #fff;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 class="center">Escanear</h2>
+    <br>
+    <div class="container">
+        <div class="row">
+            <!-- Camera Section -->
+            <div class="col s12">
+                <div id="reader"></div>
+            </div>
+
+            <!-- Result Section -->
+            <div class="col s12" style="padding: 30px;">
+                <h4>Resultado del escaner</h4>
+                <div id="result" class="result">
+                    Resultados aquí
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fixed-action-btn">
+        <a href="home.html" class="btn-floating btn-large red">
+            <i class="large material-icons">home</i>
+        </a>
+        <ul>
+            <li><a target="_blank" href="https://www.google.com/maps" class="btn-floating red"><i
+                        class="material-icons">insert_chart</i></a></li>
+            <li><a class="btn-floating yellow darken-1"><i class="material-icons">work</i></a></li>
+            <li><a href="generate.html" class="btn-floating green"><i class="material-icons">mode_edit</i></a></li>
+            <li><a href="camera.html" class="btn-floating blue"><i
+                        class="material-icons">camera_alt</i></a></li>
+
+        </ul>
+    </div>
+
+    <script>
+        // When scan is successful function will produce data
+        function onScanSuccess(barcodeMessage) {
+            document.getElementById("result").innerHTML =
+                '<span class="result">' + barcodeMessage + "</span>";
+        }
+
+        // When scan is unsuccessful function will produce an error message
+        function onScanError(errorMessage) {
+            // Handle Scan Error
+        }
+
+        // Setting up Barcode Scanner properties
+        var html5BarcodeScanner = new Html5QrcodeScanner("reader", {
+            fps: 10,
+            qrbox: { width: 250, height: 125 },
+            disableFlip: true,
+        });
+
+        // Initialize the scanner
+        html5BarcodeScanner.render(onScanSuccess, onScanError);
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>

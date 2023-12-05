@@ -1,0 +1,22 @@
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+h1 {
+  text-align: center;
+}
+
+#reader {
+  width: 100%;
+}
+
+.result {
+  background-color: green;
+  color: #fff;
+  padding: 20px;
+}
